@@ -1,0 +1,234 @@
+/* ==========================================
+   SECÇÃO DE REDES SOCIAIS (CONTATO)
+   ========================================== */
+.contato {
+  background-color: #302821; /* Marrom quase preto da paleta */
+  padding: 120px 5%;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+
+  .contato-container {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    .contato-cabecalho {
+      margin-bottom: 50px;
+
+      h2 {
+        font-size: 3.5rem;
+        color: #F3E5D0; /* Texto Creme */
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+
+        span {
+          color: #C17A3C; /* Âmbar / Caramelo */
+          text-shadow: 0 0 15px rgba(193, 122, 60, 0.4);
+        }
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: #C8B9A5; /* Bege acinzentado */
+        line-height: 1.8;
+      }
+    }
+
+    .mural-redes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+
+      .card-rede {
+        background-color: rgba(80, 55, 39, 0.4); /* Fundo com marrom café translúcido */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 40px 20px;
+        border-radius: 12px;
+        text-decoration: none;
+        border: 1px solid rgba(200, 185, 165, 0.1);
+        transition: all 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+
+        svg {
+          width: 45px;
+          height: 45px;
+          color: #F3E5D0;
+          transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .nome-rede {
+          color: #F3E5D0;
+          font-size: 1.1rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          transition: color 0.3s ease;
+        }
+
+        &:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+          background-color: rgba(255, 255, 255, 0.08);
+
+          svg, .nome-rede {
+            color: #ffffff;
+          }
+
+          /* Cores oficiais de cada rede social no hover */
+          &.inst { 
+            border-color: #e1306c; 
+            box-shadow: 0 15px 30px rgba(225, 48, 108, 0.3);
+            background: linear-gradient(135deg, rgba(80, 55, 39, 0.6) 0%, rgba(225, 48, 108, 0.2) 100%);
+          }
+          &.yt { 
+            border-color: #ff0000; 
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(80, 55, 39, 0.6) 0%, rgba(255, 0, 0, 0.2) 100%);
+          }
+          &.sp { 
+            border-color: #1ed760; 
+            box-shadow: 0 15px 30px rgba(30, 215, 96, 0.3);
+            background: linear-gradient(135deg, rgba(80, 55, 39, 0.6) 0%, rgba(30, 215, 96, 0.2) 100%);
+          }
+          &.fb { 
+            border-color: #1877f2; 
+            box-shadow: 0 15px 30px rgba(24, 119, 242, 0.3);
+            background: linear-gradient(135deg, rgba(80, 55, 39, 0.6) 0%, rgba(24, 119, 242, 0.2) 100%);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ==========================================
+   FOOTER PREMIUM
+   ========================================== */
+.footer {
+  background-color: #171310; /* Preto quente da paleta */
+  padding: 80px 5% 30px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: radial-gradient(circle, rgba(193, 122, 60, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+
+    .footer-logo {
+      height: 90px;
+      object-fit: contain;
+      margin-bottom: 30px;
+      opacity: 0.75;
+      transition: opacity 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+
+      &:hover {
+        opacity: 1;
+        filter: drop-shadow(0 0 15px rgba(193, 122, 60, 0.4));
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      a {
+        color: #C8B9A5;
+        text-decoration: none;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #C17A3C;
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(200, 185, 165, 0.1);
+    padding-top: 30px;
+
+    p {
+      color: #8c7d6b;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .developer {
+      font-size: 0.85rem;
+
+      a {
+        color: #C17A3C;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #F3E5D0;
+        }
+      }
+    }
+  }
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+   ========================================== */
+@media (max-width: 992px) {
+  .contato .contato-container .mural-redes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .contato {
+    padding: 80px 5%;
+
+    .contato-container .contato-cabecalho h2 {
+      font-size: 2.8rem;
+    }
+
+    .contato-container .mural-redes {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+  }
+
+  .footer {
+    padding: 60px 5% 30px;
+
+    .footer-content {
+      .footer-logo {
+        height: 70px;
+      }
+      .footer-links {
+        gap: 15px;
+      }
+    }
+  }
+}

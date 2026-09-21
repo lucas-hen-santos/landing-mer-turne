@@ -1,0 +1,49 @@
+<section id="agenda" class="agenda" #agendaSecao>
+  <!-- Overlay escuro para manter a leitura perfeita dos cards -->
+  <div class="agenda-overlay"></div>
+
+  <div class="agenda-container">
+    <h2 data-aos="fade-down">Nossa <span>Agenda</span></h2>
+    <p data-aos="fade-up" data-aos-delay="100">Acompanhe por onde Mailson & Rafael vão passar nos próximos meses.</p>
+    
+    <div class="shows-lista">      
+      @if (carregando) {
+        <div class="mensagem-status">
+          <p>Carregando as próximas datas...</p>
+        </div>
+      } @else if (erro) {
+        <div class="mensagem-status erro">
+          <p>Erro ao conectar com a agenda. Tente novamente mais tarde.</p>
+        </div>
+      }
+
+      @for (show of showsExibidos; track show.id; let i = $index) {
+        <div class="show-item" data-aos="fade-up" [attr.data-aos-delay]="150 + (i * 100)">
+          <div class="data-box">
+            <span class="dia">{{ show.dia }}</span>
+            <span class="mes">{{ show.mes }}</span>
+          </div>
+          <div class="info-box">
+            <h3>{{ show.cidade }}</h3>
+            <p>{{ show.local }}</p>
+          </div>
+        </div>
+      } @empty {
+        @if (!carregando) {
+          <div class="mensagem-status">
+            <p>Nenhum show marcado para os próximos dias.</p>
+          </div>
+        }
+      }      
+    </div>
+
+    <!-- Botões de Paginação -->
+    @if (shows.length > itensPorPagina) {
+      <div class="paginacao" data-aos="fade-up">
+        <button (click)="mudarPagina(-1)" [disabled]="paginaAtual === 1">Anterior</button>
+        <span>Página {{ paginaAtual }}</span>
+        <button (click)="mudarPagina(1)" [disabled]="(paginaAtual * itensPorPagina) >= shows.length">Próximo</button>
+      </div>
+    }
+  </div>
+</section>

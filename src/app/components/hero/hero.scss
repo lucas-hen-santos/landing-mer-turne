@@ -1,0 +1,186 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 120px 5% 40px;
+  overflow: hidden;
+  
+  /* Efeito Parallax com a imagem de fundo */
+  background-image: url('/img/publico.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Overlay baseado no Preto Quente (#171310) da sua paleta */
+    background: linear-gradient(
+      to bottom, 
+      rgba(23, 19, 16, 0.8) 0%, 
+      rgba(23, 19, 16, 0.5) 50%, 
+      #171310 100%
+    );
+    z-index: 0;
+  }
+
+  .hero-content {
+    flex: 1;
+    max-width: 600px;
+    z-index: 2;
+    
+    .subtitulo {
+      font-size: 1.5rem;
+      /* Texto secundário: Bege acinzentado */
+      color: #C8B9A5;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+      font-weight: 500;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+    
+    h1 {
+      font-size: 5.5rem;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      /* Texto principal: Creme */
+      color: #F3E5D0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.6);
+      
+      span {
+        /* Destaque: Âmbar / caramelo (#C17A3C) */
+         color: #e50914;
+        text-shadow: 0 0 20px rgba(229, 9, 20, 0.5); 
+      }
+    }
+    
+    p {
+      font-size: 1.25rem;
+      /* Texto secundário para boa legibilidade */
+      color: #C8B9A5;
+      margin-bottom: 40px;
+      line-height: 1.6;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+  }
+
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 1;
+
+    /* Luz de fundo (backlight) baseada no Laranja Queimado (#9D4F24) */
+    &::before {
+      content: '';
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(circle, rgba(157, 79, 36, 0.4) 0%, rgba(157, 79, 36, 0) 65%);
+      z-index: 0;
+      pointer-events: none;
+      animation: stageLight 4s ease-in-out infinite;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      max-height: 85vh;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+      animation: float 6s ease-in-out infinite;
+      
+      -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
+      mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
+    }
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+// ==========================================
+// RESPONSIVIDADE
+// ==========================================
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 140px;
+    padding-bottom: 0;
+    background-attachment: scroll;
+    background-position: top center;
+
+    .hero-overlay {
+      background: linear-gradient(
+        to bottom, 
+        rgba(23, 19, 16, 0.85) 0%,  
+        rgba(23, 19, 16, 0.1) 40%, 
+        rgba(23, 19, 16, 0.5) 80%, 
+        #171310 100%             
+      );
+    }
+
+    .hero-content {
+      h1 { font-size: 4rem; }
+    }
+
+    .hero-image {
+      justify-content: center;
+      align-items: flex-end;
+      margin-top: 20px;
+      width: 100%;
+
+      &::before {
+        width: 150%;
+        height: 150%;
+        top: 50%;
+        background: radial-gradient(circle, rgba(157, 79, 36, 0.25) 0%, rgba(157, 79, 36, 0) 65%);
+      }
+
+      img {
+        max-height: 55vh;
+        width: auto;
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%);
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding-top: 120px;
+    
+    .hero-content {
+      .subtitulo { font-size: 1rem; }
+      h1 { font-size: 3.2rem; }
+      p { 
+        font-size: 1.1rem;
+        margin-bottom: 30px; 
+      }
+    }
+  }
+}
+
+@keyframes stageLight {
+  0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+}

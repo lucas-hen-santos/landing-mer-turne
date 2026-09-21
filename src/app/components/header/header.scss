@@ -1,0 +1,115 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
+
+  &.scrolled {
+    height: 70px;
+    /* Fundo com o Preto Quente (#171310) da paleta e efeito blur */
+    background: rgba(23, 19, 16, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(193, 122, 60, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .logo-container .logo {
+    height: 65px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+
+    .nav-item {
+      color: #F3E5D0; /* Texto Creme */
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      position: relative;
+      padding: 10px 0;
+      transition: color 0.3s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #C17A3C; /* Âmbar / Caramelo */
+        transition: width 0.3s ease;
+      }
+
+      &:hover {
+        color: #C17A3C; /* Âmbar / Caramelo */
+        &::after { width: 100%; }
+      }
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 992px) {
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 1001;
+
+      span {
+        width: 25px;
+        height: 2px;
+        background: #F3E5D0;
+        transition: 0.3s;
+      }
+
+      &.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+      &.active span:nth-child(2) { opacity: 0; }
+      &.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100vh;
+      /* Fundo mobile com o Marrom quase preto (#302821) */
+      background: #302821;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      transition: 0.4s ease-in-out;
+      z-index: 1000;
+
+      &.aberto { right: 0; }
+    }
+  }
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+

@@ -1,0 +1,11 @@
+@if (mostrarSplash()) {
+  <div class="splash-screen" [class.saindo]="iniciarSaida()">
+    <div class="splash-content">
+      <img src="/img/logo.png" alt="Logo Mailson & Rafael" class="splash-logo">
+      <div class="splash-loader-bar">
+        <div class="loader-progresso"></div>
+      </div>
+      <p>Carregando o som da nossa terra...</p>
+    </div>
+  </div>
+}

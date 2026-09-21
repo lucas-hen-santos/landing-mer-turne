@@ -1,0 +1,25 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <div class="logo-container" data-aos="fade-down" data-aos-duration="800">
+    <a href="/#inicio" (click)="fecharMenu()">
+      <img src="/img/logo.png" alt="Logo Mailson e Rafael" class="logo">
+    </a>
+  </div>
+
+  <div class="menu-toggle" [class.active]="menuAberto" (click)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="nav-links" [class.aberto]="menuAberto">
+    <!-- Adicionamos uma classe 'nav-item' para facilitar o controle de estilo -->
+    <a href="/#sobre" class="nav-item" (click)="fecharMenu()">Sobre a Dupla</a>
+    <a href="/#clipe" class="nav-item" (click)="fecharMenu()">Lançamento</a>
+    <a href="/#agenda" class="nav-item" (click)="fecharMenu()">Agenda</a>
+    <a href="/#redes" class="nav-item" (click)="fecharMenu()">Redes Sociais</a>
+  </nav>
+</header>
+
+@if (menuAberto) {
+  <div class="menu-overlay" (click)="fecharMenu()"></div>
+}

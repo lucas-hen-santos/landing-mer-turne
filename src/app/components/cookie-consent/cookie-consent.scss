@@ -1,0 +1,68 @@
+.cookie-banner {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: calc(100% - 60px); /* Garante que não vaze em telas muito pequenas */
+  max-width: 350px; /* Trava a largura para ficar com formato de card */
+  background-color: rgba(26, 26, 26, 0.95); /* Fundo um pouco mais claro que a página */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Borda premium sutil */
+  border-radius: 16px; /* Cantos arredondados */
+  padding: 25px;
+  z-index: 10000;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  /* Animação suave de entrada */
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+  .cookie-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    p {
+      font-size: 0.9rem;
+      color: #cccccc;
+      margin: 0;
+      line-height: 1.5;
+
+      strong {
+        display: block; /* Joga o título para a linha de cima */
+        color: #ffffff;
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+      }
+    }
+
+    .btn-sm {
+      width: 100%; /* Botão ocupa toda a largura do card */
+      padding: 12px 0;
+      font-size: 0.9rem;
+      border-radius: 8px;
+    }
+  }
+}
+
+/* Animação exclusiva do card */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+   ========================================== */
+@media (max-width: 576px) {
+  .cookie-banner {
+    bottom: 20px;
+    left: 20px;
+    width: calc(100% - 40px); /* Mantém uma margem de 20px de cada lado no celular */
+    padding: 20px;
+  }
+}
