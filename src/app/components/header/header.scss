@@ -13,7 +13,6 @@
 
   &.scrolled {
     height: 70px;
-    /* Fundo com o Preto Quente (#171310) da paleta e efeito blur */
     background: rgba(23, 19, 16, 0.88);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -21,18 +20,30 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
 
-  .logo-container .logo {
-    height: 65px;
-    object-fit: contain;
-    transition: all 0.3s ease;
+  .logo-container {
+    display: flex;
+    align-items: center;
+    z-index: 2; /* Mantém a logo clicável acima de tudo */
+
+    .logo {
+      height: 60px;
+      object-fit: contain;
+      transition: all 0.3s ease;
+    }
   }
 
+  /* Centralização perfeita independente do tamanho dos elementos laterais */
   .nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
+    align-items: center;
     gap: 40px;
+    z-index: 1;
 
     .nav-item {
-      color: #F3E5D0; /* Texto Creme */
+      color: #F3E5D0;
       text-decoration: none;
       font-weight: 600;
       text-transform: uppercase;
@@ -50,12 +61,12 @@
         left: 0;
         width: 0;
         height: 2px;
-        background-color: #C17A3C; /* Âmbar / Caramelo */
+        background-color: #C17A3C;
         transition: width 0.3s ease;
       }
 
       &:hover {
-        color: #C17A3C; /* Âmbar / Caramelo */
+        color: #C17A3C;
         &::after { width: 100%; }
       }
     }
@@ -66,7 +77,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    z-index: 1001;
+    z-index: 2; /* Mantém na camada superior à direita */
   }
 
   /* Estilos do Mini Player */
@@ -76,16 +87,17 @@
     background: rgba(23, 19, 16, 0.6);
     border: 1px solid rgba(193, 122, 60, 0.3);
     border-radius: 30px;
-    padding: 5px 6px;
+    padding: 5px 8px;
     gap: 12px;
     transition: all 0.3s ease;
 
     .cover-art {
       width: 36px;
       height: 36px;
-      border-radius: 50%; /* Capa redonda estilo disco/vinil */
+      border-radius: 50%;
       object-fit: cover;
       border: 1px solid #C17A3C;
+      display: block;
     }
 
     .track-info {
@@ -98,7 +110,7 @@
         font-size: 0.8rem;
         font-weight: 700;
         line-height: 1.1;
-        white-space: nowrap; /* Impede que o nome da música quebre linha */
+        white-space: nowrap;
       }
 
       .artist {
@@ -112,15 +124,14 @@
       background: #C17A3C;
       border: none;
       border-radius: 50%;
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #171310;
       cursor: pointer;
       transition: transform 0.2s ease, background 0.3s ease;
-      margin-right: 2px;
       padding: 0;
       outline: none;
 
@@ -136,6 +147,7 @@
     .menu-toggle {
       display: flex;
       flex-direction: column;
+      justify-content: center;
       gap: 6px;
       cursor: pointer;
       z-index: 1001;
@@ -156,9 +168,10 @@
       position: fixed;
       top: 0;
       right: -100%;
+      left: auto; /* Reseta o left do desktop no mobile */
+      transform: none; /* Reseta o transform do desktop no mobile */
       width: 100%;
       height: 100vh;
-      /* Fundo mobile com o Marrom quase preto (#302821) */
       background: #302821;
       flex-direction: column;
       align-items: center;
@@ -179,7 +192,6 @@
       padding: 4px;
       gap: 8px;
 
-      /* Esconde o texto no mobile para poupar espaço no header */
       .track-info {
         display: none; 
       }
@@ -190,8 +202,8 @@
       }
 
       .audio-btn {
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
       }
     }
   }
