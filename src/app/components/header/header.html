@@ -5,19 +5,49 @@
     </a>
   </div>
 
-  <div class="menu-toggle" [class.active]="menuAberto" (click)="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+  <!-- Tag de áudio oculta -->
+  <audio #audioPlayer src="/audio/triscar.wav" (ended)="onAudioEnded()"></audio>
 
   <nav class="nav-links" [class.aberto]="menuAberto">
-    <!-- Adicionamos uma classe 'nav-item' para facilitar o controle de estilo -->
     <a href="/#sobre" class="nav-item" (click)="fecharMenu()">Sobre a Dupla</a>
     <a href="/#clipe" class="nav-item" (click)="fecharMenu()">Lançamento</a>
     <a href="/#agenda" class="nav-item" (click)="fecharMenu()">Agenda</a>
     <a href="/#redes" class="nav-item" (click)="fecharMenu()">Redes Sociais</a>
   </nav>
+
+  <div class="header-actions">
+    
+    <!-- Mini Player -->
+    <div class="mini-player">
+      <!-- Imagem puxando direto da pasta public/img -->
+      <img src="/img/capa_musica.png" alt="Capa Só Triscar no Alcool" class="cover-art">
+      
+      <div class="track-info">
+        <span class="title">Só Triscar no Alcool</span>
+        <span class="artist">Mailson & Rafael</span>
+      </div>
+
+      <button class="audio-btn" (click)="toggleAudio()" aria-label="Tocar Música">
+        @if (isPlaying) {
+          <!-- Ícone de Pause -->
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+        } @else {
+          <!-- Ícone de Play -->
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        }
+      </button>
+    </div>
+
+    <div class="menu-toggle" [class.active]="menuAberto" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
 </header>
 
 @if (menuAberto) {
