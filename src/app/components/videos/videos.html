@@ -1,0 +1,59 @@
+<section id="videos" class="secao-videos">
+  <!-- Overlay escuro idêntico ao da agenda -->
+  <div class="videos-overlay"></div>
+
+  <div class="videos-container">
+    <div class="section-header" data-aos="fade-up">
+      <h2>Nossos <span>Vídeos</span></h2>
+      <p>Confira os aftermovies dos shows e os melhores momentos da nossa música.</p>
+    </div>
+
+    <!-- Grid de Vídeos (Fatiados pela paginação) -->
+    <div class="videos-grid">
+      @for (video of videosExibidos; track video.videoId; let i = $index) {
+        <div class="video-card" (click)="abrirVideo(video.videoId)" data-aos="fade-up" [attr.data-aos-delay]="150 + (i * 100)">
+          <div class="thumbnail-wrapper">
+            <img [src]="video.thumbnail" [alt]="video.titulo">
+            <div class="play-overlay">
+              <div class="play-icon">▶</div>
+            </div>
+          </div>
+          <div class="info-box">
+            <h3>{{ video.titulo }}</h3>
+          </div>
+        </div>
+      } @empty {
+        <div class="mensagem-status">
+          <p>Carregando vídeos...</p>
+        </div>
+      }
+    </div>
+
+    <!-- Botões de Paginação (Estilo idêntico ao da Agenda) -->
+    @if (videos().length > itensPorPagina) {
+      <div class="paginacao" data-aos="fade-up">
+        <button (click)="mudarPagina(-1)" [disabled]="paginaAtual === 1">Anterior</button>
+        <span>Página {{ paginaAtual }}</span>
+        <button (click)="mudarPagina(1)" [disabled]="(paginaAtual * itensPorPagina) >= videos().length">Próximo</button>
+      </div>
+    }
+  </div>
+
+  <!-- Modal / Lightbox para assistir ao vídeo -->
+  @if (videoAtivoUrl()) {
+    <div class="video-modal" (click)="fecharModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="close-btn" (click)="fecharModal()">&times;</button>
+        <div class="iframe-container">
+          <iframe 
+            [src]="videoAtivoUrl()" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  }
+</section>
