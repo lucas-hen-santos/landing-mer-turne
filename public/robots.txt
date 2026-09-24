@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+# Link para o sitemap do site
 Sitemap: https://mailsonerafael.com.br/sitemap.xml
