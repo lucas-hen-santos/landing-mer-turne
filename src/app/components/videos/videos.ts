@@ -24,7 +24,7 @@ export class Videos implements OnInit {
 
   videoAtivoUrl = signal<SafeResourceUrl | null>(null);
 
-  readonly playlistId = 'PLgJCUor4xs-3Z4dEctY4fwlSY55BFq7vb'; 
+  readonly playlistId = 'PLZ3J8K8F603w'; 
 
   constructor(private sanitizer: DomSanitizer) {}
 
