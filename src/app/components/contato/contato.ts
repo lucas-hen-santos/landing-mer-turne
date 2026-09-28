@@ -8,6 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './contato.scss'
 })
 export class Contato {
-  // A lógica de formulário foi removida.
-  // Toda a captação de contatos agora ocorre no app-contato-flutuante.
+  anoAtual: number = new Date().getFullYear();
 }
