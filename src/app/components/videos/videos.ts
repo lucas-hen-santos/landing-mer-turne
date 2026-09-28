@@ -85,7 +85,15 @@ export class Videos implements OnInit {
     this.atualizarPagina();
   }
 
-  abrirVideo(videoId: string) {
+ abrirVideo(videoId: string) {
+    // Dispara o evento personalizado para o Google Analytics
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'assistir_video', {
+        event_category: 'Videos',
+        event_label: videoId
+      });
+    }
+
     const unsafeUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
     const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
     this.videoAtivoUrl.set(safeUrl);

@@ -427,16 +427,24 @@ export class ContatoFlutuante implements OnInit {
   }
 
   selecionarOpcao(opcao: string) {
-    this.formData.assunto = opcao;
-    this.mostrarOpcoes = false;
-    this.historico.push({ emissor: 'usuario', texto: opcao });
-    this.rolarParaBaixo();
-    setTimeout(() => {
-      this.historico.push({ emissor: 'bot', texto: 'Ótimo! Para começarmos, qual é o seu nome completo ou o nome da sua empresa?' });
-      this.passoAtual = 1;
-      this.rolarParaBaixo();
-    }, 300);
+  // Rastreia qual opção o utilizador escolheu no chat
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', 'chatbot_opcao_selecionada', {
+      event_category: 'Chatbot',
+      event_label: opcao
+    });
   }
+
+  this.formData.assunto = opcao;
+  this.mostrarOpcoes = false;
+  this.historico.push({ emissor: 'usuario', texto: opcao });
+  this.rolarParaBaixo();
+  setTimeout(() => {
+    this.historico.push({ emissor: 'bot', texto: `Ótimo! Para começarmos, qual é o seu nome completo ou o nome da sua empresa?` });
+    this.passoAtual = 1;
+    this.rolarParaBaixo();
+  }, 300);
+}
 
   onInputMascara(event: Event) {
     if (this.passoAtual === 3) {
@@ -520,17 +528,25 @@ export class ContatoFlutuante implements OnInit {
       Assunto: this.formData.assunto,
       Mensagem: this.formData.mensagem
     };
-
     this.http.post('https://api.web3forms.com/submit', payload).subscribe({
       next: () => {
         this.enviando = false;
-        this.historico.push({ emissor: 'bot', texto: '✅ Tudo certo! Seus dados foram enviados com sucesso para a nossa equipe. Retornaremos em breve.' });
+        
+        // Rastreia a conversão/sucesso do lead no Chatbot via Google Analytics
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'chatbot_lead_enviado', {
+            event_category: 'Conversao',
+            event_label: this.formData.assunto
+          });
+        }
+
+        this.historico.push({ emissor: 'bot', texto: '  Tudo certo! Seus dados foram enviados com sucesso para a nossa equipe. Retornaremos em breve.' });
         this.rolarParaBaixo();
       },
       error: (err) => {
         console.error(err);
         this.enviando = false;
-        this.historico.push({ emissor: 'bot', texto: '⚠️ Ocorreu um erro ao enviar. Por favor, tente falar conosco pelas nossas redes sociais.' });
+        this.historico.push({ emissor: 'bot', texto: '  Ocorreu um erro ao enviar. Por favor, tente falar conosco pelas nossas redes sociais.' });
         this.rolarParaBaixo();
       }
     });
