@@ -18,7 +18,7 @@
     width: 100%;
     height: 100%;
     /* Overlay baseado no Preto Quente (#171310) da paleta */
-    background: rgba(23, 19, 16, 0.94);
+    background: rgba(23, 19, 16, 0.80);
     z-index: 1;
   }
 
@@ -172,7 +172,7 @@
 @media (max-width: 768px) {
   .agenda {
     padding: 80px 5%;
-    background-attachment: scroll; 
+    // background-attachment: scroll; 
 
     .agenda-container {
       h2 { font-size: 2.8rem; }
