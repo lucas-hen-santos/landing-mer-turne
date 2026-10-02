@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './sobre.scss'
 })
 export class Sobre implements OnInit, OnDestroy {
-  // Array com os caminhos das 5 fotos padronizadas em PNG
   imagens = [
     '/img/DS1.png',
     '/img/DS2.png',
@@ -32,7 +31,7 @@ export class Sobre implements OnInit, OnDestroy {
   iniciarCarrossel() {
     this.intervalId = setInterval(() => {
       this.imagemAtiva.update(val => (val + 1) % this.imagens.length);
-    }, 4000); // Troca a foto a cada 4 segundos automaticamente
+    }, 4500); // Troca suave a cada 4.5s
   }
 
   pararCarrossel() {
@@ -41,10 +40,9 @@ export class Sobre implements OnInit, OnDestroy {
     }
   }
 
-  // Permite ao utilizador clicar nas bolinhas para escolher a foto
   setImagem(index: number) {
     this.imagemAtiva.set(index);
     this.pararCarrossel();
-    this.iniciarCarrossel(); // Reinicia a contagem para não pular rápido demais
+    this.iniciarCarrossel(); 
   }
 }

@@ -1,58 +1,49 @@
-<section id="sobre" class="sobre">
-  <!-- Marca d'água decorativa de fundo (Logo LS2) -->
-  <img src="/img/LS2.png" alt="" class="marca-dagua" data-aos="zoom-in" data-aos-duration="2000">
+<section id="sobre" class="sobre-editorial">
+  <!-- Logo 2 como textura de fundo, bem discreta -->
+  <img src="/img/LS2.png" alt="" class="bg-texture" data-aos="fade-in" data-aos-duration="2000">
 
   <div class="sobre-container">
     
-    <!-- Coluna da Esquerda: Galeria com Fade e Máscara -->
-    <div class="sobre-imagem" data-aos="fade-right" data-aos-delay="200">
-      <div class="imagem-dupla-container">
-        
-        <!-- Loop das 5 imagens padronizadas 1080x1080 em PNG -->
-        @for (img of imagens; track img; let i = $index) {
-          <img [src]="img" alt="Mailson & Rafael" 
-               class="galeria-img" 
-               [class.ativa]="imagemAtiva() === i">
-        }
-
-        <!-- Controles interativos (Bolinhas) -->
-        <div class="galeria-controles">
-          @for (img of imagens; track img; let i = $index) {
-            <button class="dot" 
-                    [class.ativo]="imagemAtiva() === i" 
-                    (click)="setImagem(i)" 
-                    aria-label="Ver próxima foto">
-            </button>
-          }
-        </div>
+    <!-- Coluna 1: O Texto da História -->
+    <div class="sobre-texto" data-aos="fade-right" data-aos-duration="1000">
+      <span class="tag-topo">Conheça a dupla</span>
+      <h2>Nossa <span>História</span></h2>
+      <div class="linha-separadora"></div>
+      
+      <div class="conteudo-paragrafos">
+        <p>
+          Com duas décadas de dedicação exclusiva à música sertaneja, <strong>Mailson & Rafael</strong> construíram uma trajetória sólida e marcante. Muito mais do que cantar, a dupla leva para os palcos a verdadeira essência da nossa região, misturando a tradição do sertanejo raiz com a energia dos sucessos atuais.
+        </p>
+        <p>
+          Ao longo desses 20 anos de estrada, acumulamos não apenas quilômetros rodados, mas histórias inesquecíveis, grandes parcerias e um público fiel que nos acompanha em cada cidade. Nossa missão sempre foi e sempre será levar alegria e emoção através das cordas do violão e das nossas vozes.
+        </p>
       </div>
+
+      <!-- Logo 1 como assinatura elegante ao fim da história -->
+      <img src="/img/LS1.png" alt="Assinatura Mailson e Rafael" class="assinatura-logo">
     </div>
 
-    <!-- Coluna da Direita: Texto e Cards -->
-    <div class="sobre-texto" data-aos="fade-left">
+    <!-- Coluna 2: O Palco Editorial -->
+    <div class="sobre-galeria" data-aos="fade-left" data-aos-duration="1200">
+      <div class="foco-luz"></div>
+      
+      <div class="imagens-frame">
+        @for (img of imagens; track img; let i = $index) {
+          <img [src]="img" alt="Mailson & Rafael" 
+               class="foto-dupla" 
+               [class.ativa]="imagemAtiva() === i">
+        }
+      </div>
 
-      <h2>Nossa <span>História</span></h2>
-      <p>
-        Com duas décadas de dedicação exclusiva à música sertaneja, <strong>Mailson & Rafael</strong> construíram uma trajetória sólida e marcante. Muito mais do que cantar, a dupla leva para os palcos a verdadeira essência da nossa região, misturando a tradição do sertanejo raiz com a energia dos sucessos atuais.
-      </p>
-      <p>
-        Ao longo desses 20 anos de estrada, acumulamos não apenas quilômetros rodados, mas histórias inesquecíveis, grandes parcerias e um público fiel que nos acompanha em cada cidade. Nossa missão sempre foi e sempre será levar alegria e emoção através das cordas do violão e das nossas vozes.
-      </p>
-
-      <!-- Cards de Destaque posicionados logo abaixo do texto -->
-      <div class="sobre-destaques">
-        <div class="destaque-card" data-aos="fade-up" data-aos-delay="0">
-          <h3>20</h3>
-          <p>Anos de Estrada</p>
-        </div>
-        <div class="destaque-card" data-aos="fade-up" data-aos-delay="150">
-          <h3>100%</h3>
-          <p>Sertanejo</p>
-        </div>
-        <div class="destaque-card" data-aos="fade-up" data-aos-delay="300">
-          <h3>+</h3>
-          <p>Muita História para Cantar</p>
-        </div>
+      <!-- Barras de progresso minimalistas em vez de bolinhas -->
+      <div class="barras-navegacao">
+        @for (img of imagens; track img; let i = $index) {
+          <button class="barra" 
+                  [class.ativa]="imagemAtiva() === i" 
+                  (click)="setImagem(i)" 
+                  aria-label="Ver foto">
+          </button>
+        }
       </div>
     </div>
 
