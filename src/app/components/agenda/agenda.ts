@@ -28,7 +28,6 @@ export class Agenda implements OnInit {
   carregando = true;
   erro = false;
 
-  // Referência para o topo da seção da agenda
   @ViewChild('agendaSecao') private agendaSecao!: ElementRef;
 
   private http = inject(HttpClient);
@@ -66,7 +65,6 @@ export class Agenda implements OnInit {
     this.paginaAtual += direcao;
     this.atualizarPagina();
     
-    // Rola suavemente para o topo da agenda para manter o foco do usuário
     if (this.agendaSecao) {
       this.agendaSecao.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }

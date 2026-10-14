@@ -7,12 +7,21 @@
   padding: 120px 5% 40px;
   overflow: hidden;
   
-  /* Efeito Parallax com a imagem de fundo */
-  background-image: url('/img/publico.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* --- VÍDEO DE FUNDO EFEITO PARALLAX FIXO --- */
+  .video-background-parallax {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.6; // Suaviza o vídeo para o texto brilhar mais
+    position: fixed; // Isso é o que cria o Efeito Parallax em vídeos!
+  }
 
   .hero-overlay {
     position: absolute;
@@ -20,20 +29,20 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* Overlay baseado no Preto Quente (#171310) da sua paleta */
+    /* Overlay baseado no Preto Quente (#171310) */
     background: linear-gradient(
       to bottom, 
       rgba(23, 19, 16, 0.8) 0%, 
       rgba(23, 19, 16, 0.5) 50%, 
       #171310 100%
     );
-    z-index: 0;
+    z-index: 1; // Fica acima do vídeo
   }
 
   .hero-content {
     flex: 1;
     max-width: 600px;
-    z-index: 2;
+    z-index: 2; // Acima do overlay
     
     .subtitulo {
       font-size: 1.5rem;

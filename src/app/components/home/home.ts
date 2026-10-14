@@ -10,7 +10,7 @@ import { Videos } from '../videos/videos';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [Hero, Sobre, Clipe, Agenda, Contato, Contratante, Videos],
+  imports:  [Hero, Sobre, Clipe, Agenda, Contato, Contratante, Videos],
   template: `
     <app-hero></app-hero>
     <app-sobre></app-sobre>
