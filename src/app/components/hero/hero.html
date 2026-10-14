@@ -1,12 +1,13 @@
 <section id="inicio" class="hero">
   <!-- VÍDEO DE FUNDO CINEMATOGRÁFICO -->
   <video autoplay loop muted playsinline class="video-background-parallax">
-    <source src="./img/clipe.mp4" type="video/mp4">
+    <!-- Removido o ponto (.) do caminho do src -->
+    <source src="/img/clipe.mp4" type="video/mp4">
   </video>
 
   <!-- Overlay para escurecer o vídeo e garantir leitura -->
   <div class="hero-overlay"></div>
-  
+
   <!-- O conteúdo entra deslizando pela esquerda -->
   <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
     <h2 class="subtitulo">20 Anos de História</h2>
@@ -17,7 +18,7 @@
       <button class="btn-destaque">Ver Agenda de Shows</button>
     </a>
   </div>
-  
+
   <!-- A imagem entra deslizando pela direita -->
   <div class="hero-image" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
     <img src="/img/dupla.png" alt="Foto de Mailson & Rafael">
