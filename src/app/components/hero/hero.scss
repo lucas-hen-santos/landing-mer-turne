@@ -5,11 +5,11 @@
   justify-content: space-between;
   min-height: 100vh;
   padding: 120px 5% 40px;
-  /* overflow: hidden; -> Removido para evitar bloqueio do vídeo parallax no mobile */
+  overflow: hidden;
 
   /* --- VÍDEO DE FUNDO EFEITO PARALLAX FIXO --- */
   .video-background-parallax {
-    position: fixed; /* Apenas fixed, sem duplicação */
+    position: absolute; /* Apenas fixed, sem duplicação */
     top: 50%;
     left: 50%;
     min-width: 100vw;
