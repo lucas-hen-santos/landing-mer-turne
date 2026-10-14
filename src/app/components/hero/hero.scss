@@ -9,17 +9,16 @@
 
   /* --- VÍDEO DE FUNDO EFEITO PARALLAX FIXO --- */
   .video-background-parallax {
-    position: absolute; /* Apenas fixed, sem duplicação */
-    top: 50%;
-    left: 50%;
-    min-width: 100vw;
-    min-height: 100vh;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
     z-index: 0;
-    opacity: 0.6; // Suaviza o vídeo para o texto brilhar mais
+    opacity: 0.8; /* Aumentei um pouco a opacidade para garantir que é visível */
+    pointer-events: none; /* Garante que o vídeo não bloqueia cliques no site */
   }
 
   .hero-overlay {
