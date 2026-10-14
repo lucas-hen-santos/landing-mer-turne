@@ -427,7 +427,6 @@ export class ContatoFlutuante implements OnInit {
   }
 
   selecionarOpcao(opcao: string) {
-  // Rastreia qual opção o utilizador escolheu no chat
   if (typeof window !== 'undefined' && (window as any).gtag) {
     (window as any).gtag('event', 'chatbot_opcao_selecionada', {
       event_category: 'Chatbot',
@@ -532,7 +531,6 @@ export class ContatoFlutuante implements OnInit {
       next: () => {
         this.enviando = false;
         
-        // Rastreia a conversão/sucesso do lead no Chatbot via Google Analytics
         if (typeof window !== 'undefined' && (window as any).gtag) {
           (window as any).gtag('event', 'chatbot_lead_enviado', {
             event_category: 'Conversao',

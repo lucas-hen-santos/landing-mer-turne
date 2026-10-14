@@ -1,13 +1,11 @@
-// styles.scss
 
 @import 'aos/dist/aos.css';
 
-// Novas variáveis de cor baseadas na identidade visual da turnê
-$cor-fundo: #14191F;      // Azul escuro acinzentado (fundo)
-$cor-texto: #F2E3D5;      // Bege quente (texto principal)
-$cor-destaque: #C85A32;   // Cobre/Terracota (botões e detalhes)
-$cor-secundaria: #2B4A3D; // Verde Musgo (apoio)
-$cor-contorno: #0a0c0f;   // Tom ainda mais escuro para sombras/tracks
+$cor-fundo: #14191F;      
+$cor-texto: #F2E3D5;      
+$cor-destaque: #C85A32;   
+$cor-secundaria: #2B4A3D; 
+$cor-contorno: #0a0c0f;   
 
 html {
   scroll-behavior: smooth;
@@ -27,9 +25,9 @@ body {
   overflow-x: hidden;
 }
 
-/* ==========================================
-   CUSTOM SCROLLBAR
-   ========================================== */
+
+
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -44,12 +42,12 @@ body {
   background: $cor-destaque;
 }
 
-/* ==========================================
-   BOTÃO GLOBAL
-   ========================================== */
+
+
+
 .btn-destaque {
   background-color: $cor-destaque;
-  color: #fff; // Mantém branco ou bege claro para contraste no botão
+  color: #fff; 
   padding: 14px 32px;
   border: 2px solid $cor-destaque;
   border-radius: 8px;
@@ -63,15 +61,14 @@ body {
   &:hover {
     background-color: transparent;
     color: $cor-destaque;
-    // O rgba abaixo usa os valores RGB do #C85A32 (200, 90, 50)
     box-shadow: 0 0 20px rgba(200, 90, 50, 0.4);
     transform: translateY(-3px);
   }
 }
 
-/* ==========================================
-   ANIMAÇÕES DE ENTRADA
-   ========================================== */
+
+
+
 @keyframes fadeUp {
   from {
     opacity: 0;

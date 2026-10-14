@@ -31,7 +31,7 @@ export class Sobre implements OnInit, OnDestroy {
   iniciarCarrossel() {
     this.intervalId = setInterval(() => {
       this.imagemAtiva.update(val => (val + 1) % this.imagens.length);
-    }, 4500); // Troca suave a cada 4.5s
+    }, 4500); 
   }
 
   pararCarrossel() {

@@ -175,8 +175,8 @@
     }
   }
 
-  /* Modal Lightbox otimizado para vídeos verticais */
- /* Modal Lightbox otimizado para vídeos verticais inteiros na tela */
+  
+ 
   .video-modal {
     position: fixed;
     inset: 0;
@@ -191,9 +191,9 @@
     .modal-content {
       position: relative;
       width: 100%;
-      max-width: 360px; /* Largura ideal para vídeos verticais */
-      max-height: 85vh;  /* Garante que nunca ultrapasse a altura visível da tela */
-      aspect-ratio: 9/16; /* Mantém a proporção correta de pé */
+      max-width: 360px; 
+      max-height: 85vh;  
+      aspect-ratio: 9/16; 
       background: #171310;
       border-radius: 14px;
       overflow: hidden;
@@ -262,7 +262,6 @@
 @media (max-width: 992px) {
   .secao-videos {
     padding: 80px 5%;
-    // background-attachment: scroll;
 
     .videos-container {
       .section-header {

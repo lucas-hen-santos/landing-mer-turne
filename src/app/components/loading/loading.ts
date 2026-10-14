@@ -13,11 +13,9 @@ export class Loading implements OnInit {
   iniciarSaida = signal(false);
 
   ngOnInit() {
-    // Tempo que a tela de carregamento fica visível (ex: 1.8 segundos)
     setTimeout(() => {
       this.iniciarSaida.set(true);
       
-      // Remove o componente do DOM após a animação de fade-out terminar (0.6s)
       setTimeout(() => {
         this.mostrarSplash.set(false);
       }, 600);

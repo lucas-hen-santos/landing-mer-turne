@@ -56,7 +56,7 @@ import { RouterLink } from '@angular/router';
 
     h1 {
       font-size: 6rem;
-      color: #C17A3C; /* Âmbar / Caramelo da identidade visual */
+      color: #C17A3C; 
       margin: 0;
       line-height: 1;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -65,19 +65,19 @@ import { RouterLink } from '@angular/router';
 
     h2 {
       font-size: 2rem;
-      color: #F3E5D0; /* Texto Creme */
+      color: #F3E5D0; 
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     p {
       font-size: 1.15rem;
-      color: #C8B9A5; /* Tom secundário padrão do site */
+      color: #C8B9A5; 
       margin-bottom: 30px;
       line-height: 1.6;
     }
 
-    /* Botão alinhado ao padrão de destaque do site */
+    
     .btn-destaque {
       background-color: #C17A3C;
       color: #171310;
@@ -98,7 +98,7 @@ import { RouterLink } from '@angular/router';
       }
     }
 
-    /* Animação de flutuação suave da logo */
+    
     @keyframes floatPulse {
       0% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-12px) scale(1.03); filter: drop-shadow(0 15px 20px rgba(193, 122, 60, 0.4)); }
@@ -106,7 +106,7 @@ import { RouterLink } from '@angular/router';
     }
 
     .footer-erro {
-      background-color: #171310; /* Preto Quente */
+      background-color: #171310; 
       padding: 40px 5% 20px;
       border-top: 1px solid rgba(193, 122, 60, 0.2);
       text-align: center;

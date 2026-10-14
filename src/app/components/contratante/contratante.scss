@@ -1,5 +1,5 @@
 .contratante-section {
-  background-color: #171310; /* Marrom quase preto da paleta */
+  background-color: #171310; 
   padding: 120px 5%;
   position: relative;
   z-index: 2;
@@ -14,20 +14,20 @@
 
       h2 {
         font-size: 3.5rem;
-        color: #F3E5D0; /* Texto Creme */
+        color: #F3E5D0; 
         text-transform: uppercase;
         margin-bottom: 20px;
         letter-spacing: 2px;
 
         span {
-          color: #C17A3C; /* Âmbar / Caramelo */
+          color: #C17A3C; 
           text-shadow: 0 0 15px rgba(193, 122, 60, 0.4);
         }
       }
 
       p {
         font-size: 1.2rem;
-        color: #C8B9A5; /* Bege acinzentado */
+        color: #C8B9A5; 
         line-height: 1.8;
         max-width: 700px;
         margin: 0 auto;
@@ -41,7 +41,7 @@
       flex-wrap: wrap;
     }
 
-    /* Estilização padrão dos botões de material e contatos */
+    
     .btn-material, .btn-contato {
       background: linear-gradient(135deg, rgba(80, 55, 39, 0.6) 0%, rgba(48, 40, 33, 0.8) 100%);
       backdrop-filter: blur(10px);
@@ -102,7 +102,7 @@
       }
     }
 
-    /* Bloco de Contato Direto */
+    
     .contato-contratante {
       margin-top: 60px;
       border-top: 1px solid rgba(200, 185, 165, 0.15);

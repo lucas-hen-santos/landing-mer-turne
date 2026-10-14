@@ -5,7 +5,7 @@
     </a>
   </div>
 
-  <!-- Tag de áudio oculta -->
+  
   <audio #audioPlayer src="/audio/triscar.wav" (ended)="onAudioEnded()"></audio>
 
   <nav class="nav-links" [class.aberto]="menuAberto">
@@ -18,7 +18,7 @@
 
   <div class="header-actions">
     
-    <!-- Mini Player -->
+    
     <div class="mini-player">
       <img src="/img/capa_musica.jpg" alt="Capa Só Triscar no Álcool" class="cover-art">
       
@@ -29,12 +29,12 @@
 
       <button class="audio-btn" (click)="toggleAudio()" aria-label="Tocar Música">
         @if (isPlaying) {
-          <!-- Ícone de Pause -->
+          
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
             <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
           </svg>
         } @else {
-          <!-- Ícone de Play -->
+          
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
             <path d="M8 5v14l11-7z"/>
           </svg>

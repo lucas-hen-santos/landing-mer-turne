@@ -1,8 +1,8 @@
-/* ==========================================
-   SECÇÃO DE REDES SOCIAIS (CONTATO)
-   ========================================== */
+
+
+
 .contato {
-  background-color: #171310; /* Marrom quase preto da paleta */
+  background-color: #171310; 
   padding: 120px 5%;
   position: relative;
   z-index: 2;
@@ -17,20 +17,20 @@
 
       h2 {
         font-size: 3.5rem;
-        color: #F3E5D0; /* Texto Creme */
+        color: #F3E5D0; 
         text-transform: uppercase;
         margin-bottom: 20px;
         letter-spacing: 2px;
 
         span {
-          color: #C17A3C; /* Âmbar / Caramelo */
+          color: #C17A3C; 
           text-shadow: 0 0 15px rgba(193, 122, 60, 0.4);
         }
       }
 
       p {
         font-size: 1.2rem;
-        color: #C8B9A5; /* Bege acinzentado */
+        color: #C8B9A5; 
         line-height: 1.8;
       }
     }
@@ -41,7 +41,7 @@
       gap: 25px;
 
       .card-rede {
-        background-color: rgba(80, 55, 39, 0.4); /* Fundo com marrom café translúcido */
+        background-color: rgba(80, 55, 39, 0.4); 
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         padding: 40px 20px;
@@ -80,7 +80,7 @@
             color: #ffffff;
           }
 
-          /* Cores oficiais de cada rede social no hover */
+          
           &.inst { 
             border-color: #e1306c; 
             box-shadow: 0 15px 30px rgba(225, 48, 108, 0.3);
@@ -107,11 +107,11 @@
   }
 }
 
-/* ==========================================
-   FOOTER PREMIUM
-   ========================================== */
+
+
+
 .footer {
-  background-color: #171310; /* Preto quente da paleta */
+  background-color: #171310; 
   padding: 80px 5% 30px;
   position: relative;
 
@@ -196,9 +196,9 @@
   }
 }
 
-/* ==========================================
-   RESPONSIVIDADE
-   ========================================== */
+
+
+
 @media (max-width: 992px) {
   .contato .contato-container .mural-redes {
     grid-template-columns: repeat(2, 1fr);

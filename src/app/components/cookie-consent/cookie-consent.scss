@@ -2,17 +2,17 @@
   position: fixed;
   bottom: 30px;
   left: 30px;
-  width: calc(100% - 60px); /* Garante que não vaze em telas muito pequenas */
-  max-width: 350px; /* Trava a largura para ficar com formato de card */
-  background-color: rgba(26, 26, 26, 0.95); /* Fundo um pouco mais claro que a página */
+  width: calc(100% - 60px); 
+  max-width: 350px; 
+  background-color: rgba(26, 26, 26, 0.95); 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08); /* Borda premium sutil */
-  border-radius: 16px; /* Cantos arredondados */
+  border: 1px solid rgba(255, 255, 255, 0.08); 
+  border-radius: 16px; 
   padding: 25px;
   z-index: 10000;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  /* Animação suave de entrada */
+  
   animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 
   .cookie-content {
@@ -27,7 +27,7 @@
       line-height: 1.5;
 
       strong {
-        display: block; /* Joga o título para a linha de cima */
+        display: block; 
         color: #ffffff;
         font-size: 1.05rem;
         margin-bottom: 8px;
@@ -35,7 +35,7 @@
     }
 
     .btn-sm {
-      width: 100%; /* Botão ocupa toda a largura do card */
+      width: 100%; 
       padding: 12px 0;
       font-size: 0.9rem;
       border-radius: 8px;
@@ -43,7 +43,7 @@
   }
 }
 
-/* Animação exclusiva do card */
+
 @keyframes popIn {
   from {
     opacity: 0;
@@ -55,14 +55,14 @@
   }
 }
 
-/* ==========================================
-   RESPONSIVIDADE
-   ========================================== */
+
+
+
 @media (max-width: 576px) {
   .cookie-banner {
     bottom: 20px;
     left: 20px;
-    width: calc(100% - 40px); /* Mantém uma margem de 20px de cada lado no celular */
+    width: calc(100% - 40px); 
     padding: 20px;
   }
 }

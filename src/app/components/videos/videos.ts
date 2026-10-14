@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { environment } from '../../../environments/environment'; 
 
 interface VideoItem {
   titulo: string;
@@ -18,19 +19,17 @@ interface VideoItem {
 export class Videos implements OnInit {
   videos = signal<VideoItem[]>([]);
   videosExibidos: VideoItem[] = [];
-  
   paginaAtual = 1;
-  itensPorPagina = 6; // Valor padrão para desktop
-
+  itensPorPagina = 6;
+  
   videoAtivoUrl = signal<SafeResourceUrl | null>(null);
-
-  readonly playlistId = 'PLZ3J8K8F603w'; 
+  mensagemErro = signal<string | null>(null);
 
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.verificarTamanhoTela();
-    this.carregarVideosDoYouTube();
+    this.carregarVideosDaAPIYouTube();
   }
 
   @HostListener('window:resize', [])
@@ -39,38 +38,47 @@ export class Videos implements OnInit {
   }
 
   verificarTamanhoTela() {
-    // Se a largura da tela for menor ou igual a 992px (celular/tablet), mostra 3 por página
     const largura = window.innerWidth;
     const novoLimite = largura <= 992 ? 3 : 6;
-
     if (this.itensPorPagina !== novoLimite) {
       this.itensPorPagina = novoLimite;
-      this.paginaAtual = 1; // Reseta para a primeira página ao redimensionar
+      this.paginaAtual = 1; 
       this.atualizarPagina();
     }
   }
 
-  async carregarVideosDoYouTube() {
+  async carregarVideosDaAPIYouTube() {
     try {
-      const url = `https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fplaylist_id%3D${this.playlistId}`;
+      this.mensagemErro.set(null);
+      const { apiKey, playlistId } = environment.youtube;
       
+      const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${playlistId}&key=${apiKey}`;
+             
       const response = await fetch(url);
       const data = await response.json();
-
-      if (data.status === 'ok' && data.items) {
+      
+      if (data.items && data.items.length > 0) {
         const listaMapeada: VideoItem[] = data.items.map((item: any) => {
-          const videoId = item.link.split('v=')[1] || item.guid.split(':').pop();
+          const snippet = item.snippet;
+          const videoId = snippet.resourceId.videoId;
+          const thumbnails = snippet.thumbnails;
+          const thumbUrl = thumbnails.high?.url || thumbnails.medium?.url || thumbnails.default?.url;
+
           return {
-            titulo: item.title,
+            titulo: snippet.title,
             videoId: videoId,
-            thumbnail: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+            thumbnail: thumbUrl
           };
         });
+        
         this.videos.set(listaMapeada);
         this.atualizarPagina();
+      } else {
+        this.mensagemErro.set('Nenhum vídeo encontrado nesta playlist.');
       }
     } catch (error) {
       console.error('Erro ao carregar vídeos do YouTube:', error);
+      this.mensagemErro.set('Erro ao carregar os vídeos automaticamente.');
     }
   }
 
@@ -85,15 +93,7 @@ export class Videos implements OnInit {
     this.atualizarPagina();
   }
 
- abrirVideo(videoId: string) {
-    // Dispara o evento personalizado para o Google Analytics
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'assistir_video', {
-        event_category: 'Videos',
-        event_label: videoId
-      });
-    }
-
+  abrirVideo(videoId: string) {
     const unsafeUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
     const safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
     this.videoAtivoUrl.set(safeUrl);
